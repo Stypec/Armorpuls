@@ -5,16 +5,16 @@ using System;
 
 public class SoundManager : MonoBehaviour
 {
-    public static SoundManager instance;    
+    public static SoundManager Instance;    
 
     public Sound[] musicSounds, sfxSounds;
     public AudioSource musicSource, sfxSource;
 
     private void Awake()
     {
-        if(instance == null)
+        if(Instance == null)
         {
-            instance = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
 
         }
@@ -47,7 +47,7 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySFX(string meno)
     {
-        Sound s = Array.Find(musicSounds, x => x.meno == meno);
+        Sound s = Array.Find(sfxSounds, x => x.meno == meno);
 
         if (s == null)
         {
@@ -59,5 +59,30 @@ public class SoundManager : MonoBehaviour
             sfxSource.Play();
         }
 
+    }
+
+    public void Musicstop()
+    {
+        SoundManager.Instance.musicSource.Stop();
+    }
+
+    public void ToogleMusic()
+    {
+        musicSource.mute = !musicSource.mute;
+    }
+
+    public void ToogleSound()
+    {
+        sfxSource.mute = !sfxSource.mute;
+    }
+
+    public void MusicVolume(float volume)
+    {
+        musicSource.volume = volume;
+    }
+
+    public void SoundVolume(float volume)
+    {
+        sfxSource.volume = volume;
     }
 }
