@@ -1564,7 +1564,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &276557437
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6798,7 +6798,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1148609966}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1331440908}
+        m_TargetAssemblyTypeName: MenuVisuals, Assembly-CSharp
+        m_MethodName: BuyWithBits
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 50
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1148609966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7521,6 +7533,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1331440906}
   - component: {fileID: 1331440907}
+  - component: {fileID: 1331440909}
+  - component: {fileID: 1331440908}
   m_Layer: 0
   m_Name: Code
   m_TagString: Untagged
@@ -7555,6 +7569,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 695fd03c2935dad49a7077dd2532f724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1331440908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331440905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aad230adcd87af1418d792d2e202dd0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currencyHandler: {fileID: 1331440909}
+  bitsText: {fileID: 2026072291}
+--- !u!114 &1331440909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331440905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4904b8ee65ce1dd42acf68754fdd2d6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuVisuals: {fileID: 1331440908}
 --- !u!1 &1341432581
 GameObject:
   m_ObjectHideFlags: 0
@@ -8257,7 +8298,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1396503714}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1331440908}
+        m_TargetAssemblyTypeName: MenuVisuals, Assembly-CSharp
+        m_MethodName: BuyWithBits
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 160
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1396503714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8454,7 +8507,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1430962855}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1331440908}
+        m_TargetAssemblyTypeName: MenuVisuals, Assembly-CSharp
+        m_MethodName: BuyWithBits
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 760
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1430962855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9740,7 +9805,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1652081421}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1331440908}
+        m_TargetAssemblyTypeName: MenuVisuals, Assembly-CSharp
+        m_MethodName: BuyBits
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1000
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1652081421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12431,7 +12508,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2026728480}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1331440908}
+        m_TargetAssemblyTypeName: MenuVisuals, Assembly-CSharp
+        m_MethodName: BuyWithBits
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 999
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2026728480
 MonoBehaviour:
   m_ObjectHideFlags: 0

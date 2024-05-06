@@ -14,6 +14,7 @@ public class Currency_Handler : MonoBehaviour
 
     public static Currency_Handler singleton;
 
+    [SerializeField] MenuVisuals menuVisuals;
 
     private void Awake()
     {
@@ -32,16 +33,32 @@ public class Currency_Handler : MonoBehaviour
             case CurrencyType.Bits:
                 if (bits - amount < 0)
                     return false;
-                ct += amount;
+                ct -= amount;
+                menuVisuals.UpdateBits();
                 break;
 
             case CurrencyType.Credit:
                 if (credit - amount < 0)
                     return false;
-                ct += amount;
+                ct -= amount;
                 break;
         }
         return true;
     }
 
+    public void AddCurrency(CurrencyType ct, int amount)
+    {
+        switch (ct)
+        {
+             case CurrencyType.Bits:
+                ct += amount;
+                menuVisuals.UpdateBits();
+                break;
+
+             case CurrencyType.Credit:
+                ct += amount;
+                menuVisuals.UpdateBits();
+                break;
+        }
+    }
 }
