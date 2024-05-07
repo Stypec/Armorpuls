@@ -31,17 +31,17 @@ public class Currency_Handler : MonoBehaviour
         switch (ct)
         {
             case CurrencyType.Bits:
-                if (bits - amount < 0)
+                if (bits + amount < 0)
                     return false;
-                bits -= amount;
+                bits += amount;
                 menuVisuals.UpdateBits();
-                break;
+                return true;
 
             case CurrencyType.Credit:
-                if (credit - amount < 0)
+                if (credit + amount < 0)
                     return false;
-                credit -= amount;
-                break;
+                credit += amount;
+                return true;
         }
         return true;
     }

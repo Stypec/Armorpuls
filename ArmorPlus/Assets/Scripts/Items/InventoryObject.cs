@@ -10,6 +10,7 @@ public enum ItemType
     Motor,
     Armor
 }
+[System.Serializable]
 public class InventoryObject
 {
     public ItemType type;

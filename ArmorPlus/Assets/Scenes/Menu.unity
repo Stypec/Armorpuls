@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1564,7 +1564,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &276557437
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3384,50 +3384,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 548248951}
   m_CullTransparentMesh: 1
---- !u!1 &564317011
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 564317012}
-  - component: {fileID: 564317013}
-  m_Layer: 0
-  m_Name: InventoryHandler
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &564317012
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 564317011}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &564317013
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 564317011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85af3d65b9c2b0647984198c3b7954db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &617646852
 GameObject:
   m_ObjectHideFlags: 0
@@ -3560,7 +3516,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 760
+  m_text: 560
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6637,6 +6593,7 @@ GameObject:
   - component: {fileID: 1148609967}
   - component: {fileID: 1148609966}
   - component: {fileID: 1148609965}
+  - component: {fileID: 1148609968}
   m_Layer: 5
   m_Name: BuyButton
   m_TagString: Untagged
@@ -6709,13 +6666,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1331440908}
-        m_TargetAssemblyTypeName: MenuVisuals, Assembly-CSharp
-        m_MethodName: BuyWithBits
-        m_Mode: 3
+      - m_Target: {fileID: 1331440911}
+        m_TargetAssemblyTypeName: Store, Assembly-CSharp
+        m_MethodName: BuyItem
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1148609968}
+          m_ObjectArgumentAssemblyTypeName: StoreItemValues, Assembly-CSharp
           m_IntArgument: 50
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6759,6 +6716,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1148609963}
   m_CullTransparentMesh: 1
+--- !u!114 &1148609968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148609963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08f2665139a898c4fb515560b34df281, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 89ac35cebdbdaf64b9d4b6432256b64d, type: 2}
+  amount: 1
 --- !u!1 &1160852783
 GameObject:
   m_ObjectHideFlags: 0
@@ -7731,8 +7702,10 @@ GameObject:
   - component: {fileID: 1331440907}
   - component: {fileID: 1331440909}
   - component: {fileID: 1331440908}
+  - component: {fileID: 1331440910}
+  - component: {fileID: 1331440911}
   m_Layer: 0
-  m_Name: Code
+  m_Name: Managers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7792,6 +7765,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuVisuals: {fileID: 1331440908}
+--- !u!114 &1331440910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331440905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff8529e2bf635fa45914bd00299f8673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1331440911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331440905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c87227e1d20b00449c4bc06d4156909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemsToSell:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1341432581
 GameObject:
   m_ObjectHideFlags: 0
@@ -8423,6 +8425,7 @@ GameObject:
   - component: {fileID: 1396503715}
   - component: {fileID: 1396503714}
   - component: {fileID: 1396503713}
+  - component: {fileID: 1396503716}
   m_Layer: 5
   m_Name: BuyButton
   m_TagString: Untagged
@@ -8495,13 +8498,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1331440908}
-        m_TargetAssemblyTypeName: MenuVisuals, Assembly-CSharp
-        m_MethodName: BuyWithBits
-        m_Mode: 3
+      - m_Target: {fileID: 1331440911}
+        m_TargetAssemblyTypeName: Store, Assembly-CSharp
+        m_MethodName: BuyItem
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1396503716}
+          m_ObjectArgumentAssemblyTypeName: StoreItemValues, Assembly-CSharp
           m_IntArgument: 160
           m_FloatArgument: 0
           m_StringArgument: 
@@ -8545,6 +8548,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1396503711}
   m_CullTransparentMesh: 1
+--- !u!114 &1396503716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396503711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08f2665139a898c4fb515560b34df281, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 69f0393032007344682b254b099b4151, type: 2}
+  amount: 1
 --- !u!1 &1407564050
 GameObject:
   m_ObjectHideFlags: 0
@@ -8632,6 +8649,7 @@ GameObject:
   - component: {fileID: 1430962856}
   - component: {fileID: 1430962855}
   - component: {fileID: 1430962854}
+  - component: {fileID: 1430962857}
   m_Layer: 5
   m_Name: BuyButton
   m_TagString: Untagged
@@ -8704,13 +8722,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1331440908}
-        m_TargetAssemblyTypeName: MenuVisuals, Assembly-CSharp
-        m_MethodName: BuyWithBits
-        m_Mode: 3
+      - m_Target: {fileID: 1331440911}
+        m_TargetAssemblyTypeName: Store, Assembly-CSharp
+        m_MethodName: BuyItem
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1430962857}
+          m_ObjectArgumentAssemblyTypeName: StoreItemValues, Assembly-CSharp
           m_IntArgument: 760
           m_FloatArgument: 0
           m_StringArgument: 
@@ -8754,6 +8772,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1430962852}
   m_CullTransparentMesh: 1
+--- !u!114 &1430962857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430962852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08f2665139a898c4fb515560b34df281, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: de8328beb1b37bd4c896c0060458543e, type: 2}
+  amount: 1
 --- !u!1 &1436550850
 GameObject:
   m_ObjectHideFlags: 0
@@ -9047,7 +9079,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1530169411
 Transform:
   m_ObjectHideFlags: 0
@@ -12711,6 +12743,7 @@ GameObject:
   - component: {fileID: 2026728481}
   - component: {fileID: 2026728480}
   - component: {fileID: 2026728479}
+  - component: {fileID: 2026728482}
   m_Layer: 5
   m_Name: BuyButton
   m_TagString: Untagged
@@ -12783,13 +12816,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1331440908}
-        m_TargetAssemblyTypeName: MenuVisuals, Assembly-CSharp
-        m_MethodName: BuyWithBits
-        m_Mode: 3
+      - m_Target: {fileID: 1331440911}
+        m_TargetAssemblyTypeName: Store, Assembly-CSharp
+        m_MethodName: BuyItem
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 2026728482}
+          m_ObjectArgumentAssemblyTypeName: StoreItemValues, Assembly-CSharp
           m_IntArgument: 999
           m_FloatArgument: 0
           m_StringArgument: 
@@ -12833,6 +12866,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2026728477}
   m_CullTransparentMesh: 1
+--- !u!114 &2026728482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026728477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08f2665139a898c4fb515560b34df281, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 554adae057263294ba6d0eb278758107, type: 2}
+  amount: 1
 --- !u!1 &2057011819
 GameObject:
   m_ObjectHideFlags: 0
@@ -13374,4 +13421,3 @@ SceneRoots:
   - {fileID: 1461496191}
   - {fileID: 1331440906}
   - {fileID: 2018125926}
-  - {fileID: 564317012}

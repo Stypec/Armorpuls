@@ -1,12 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
+
 public class InventorySystem : MonoBehaviour
 {
-    public Dictionary<ItemType, InventoryObject> inventories;
+    public Dictionary<ItemType, InventoryObject> inventories = new Dictionary<ItemType, InventoryObject>();
     public static InventorySystem singleton;
     void Awake()
     {
@@ -21,6 +27,7 @@ public class InventorySystem : MonoBehaviour
         /// <READ>
         /// Edit it so it works with data saving
         /// <READ>
+        inventories = new Dictionary<ItemType, InventoryObject>();
         for (int i = 0; i < Enum.GetNames(typeof(ItemType)).Length; i++)
         {
             ItemType t = (ItemType)i;
@@ -28,13 +35,6 @@ public class InventorySystem : MonoBehaviour
         };
     }
 
-    public void AddItemToInventory(ItemObject item, int amount)
-    {
-        inventories[item.itemType].AddItem(item, amount);
-    }
-    public void RemoveItemFromInventory(ItemObject item, int amount)
-    {
-        inventories[item.itemType].RemoveItem(item, amount);
-    }
-
 }
+
+
