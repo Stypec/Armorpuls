@@ -33,14 +33,14 @@ public class Currency_Handler : MonoBehaviour
             case CurrencyType.Bits:
                 if (bits - amount < 0)
                     return false;
-                ct -= amount;
+                bits -= amount;
                 menuVisuals.UpdateBits();
                 break;
 
             case CurrencyType.Credit:
                 if (credit - amount < 0)
                     return false;
-                ct -= amount;
+                credit -= amount;
                 break;
         }
         return true;
@@ -51,12 +51,12 @@ public class Currency_Handler : MonoBehaviour
         switch (ct)
         {
              case CurrencyType.Bits:
-                ct += amount;
+                bits += amount;
                 menuVisuals.UpdateBits();
                 break;
 
              case CurrencyType.Credit:
-                ct += amount;
+                credit += amount;
                 menuVisuals.UpdateBits();
                 break;
         }

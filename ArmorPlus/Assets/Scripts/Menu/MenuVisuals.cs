@@ -8,9 +8,8 @@ public class MenuVisuals : MonoBehaviour
 {
     [SerializeField] Currency_Handler currencyHandler;
 
-    [SerializeField] TMP_Text bitsText;
-
-
+    [SerializeField] TMP_Text bitsText;   
+     
     private void Awake()
     {
         bitsText.text = currencyHandler.bits.ToString();
