@@ -7,8 +7,9 @@ using UnityEngine.UI;
 public class MenuVisuals : MonoBehaviour
 {
     [SerializeField] Currency_Handler currencyHandler;
-
-    [SerializeField] TMP_Text bitsText;   
+    [SerializeField] float hangarLerpDuration = 5;
+    [SerializeField] Transform hangar;
+    [SerializeField] TMP_Text bitsText;
      
     private void Awake()
     {
@@ -37,5 +38,31 @@ public class MenuVisuals : MonoBehaviour
     public void BuyCredit(int credit)
     {
         currencyHandler.AddCurrency(Currency_Handler.CurrencyType.Credit, credit);
+    }
+    public void EnableHangar()
+    {
+        StopAllCoroutines();
+        StartCoroutine(LerpValuesRoutine(Vector3.zero, hangarLerpDuration));
+    }
+
+    public void DisableHangar()
+    {
+        StopAllCoroutines();
+        hangar.position = new Vector3(hangar.position.x, -20, hangar.position.z);
+    }
+
+    private IEnumerator LerpValuesRoutine(Vector3 destination, float duration)
+    {
+        float time = 0;
+
+        while ((destination - hangar.position).magnitude >= 0.05f)
+        {
+            hangar.position = Vector3.Lerp(hangar.position, destination, time / duration);
+
+            time += Time.deltaTime;
+
+            yield return null;
+        }
+        StopCoroutine(LerpValuesRoutine(destination, duration));
     }
 }
