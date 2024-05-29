@@ -14,6 +14,11 @@ public class InventorySystem : MonoBehaviour
     public static InventorySystem singleton;
     public List<Unit> units;
     public int maxUnitCount;
+
+    public Weapon_ItemObject defaultWeapon;
+    public Engine_ItemObject defaultEngine;
+    public Armor_ItemObject defaultArmor;
+
     void Awake()
     {
         if (singleton != null)
@@ -22,6 +27,7 @@ public class InventorySystem : MonoBehaviour
             return;
         }
         singleton = this;
+        DontDestroyOnLoad(gameObject);
 
         /// <READ>
         /// Edit it so it works with data saving
@@ -36,7 +42,7 @@ public class InventorySystem : MonoBehaviour
 
     public void AddUnit()
     {
-        units.Add(new Unit());
+        units.Add(new Unit(15000, 3.5f, 150, defaultWeapon, defaultEngine, defaultArmor));
         MenuVisuals.singleton.UpdateUnitIndexVisuals();
     }
 

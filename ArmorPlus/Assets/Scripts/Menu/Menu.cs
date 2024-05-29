@@ -12,7 +12,7 @@ public class Menu : MonoBehaviour
 
     public void Play()
     {
-        SceneManager.LoadScene("");
+        SceneManager.LoadScene(1);
     }
 
     public void Fullscreen()
