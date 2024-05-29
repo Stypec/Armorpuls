@@ -13,7 +13,15 @@ public enum FightMode
 public class Simulation_Unit : MonoBehaviour
 {
     protected static int moveAroundRange = 5;
-    static int currentTastPriority = 5;
+    [SerializeField] protected float sightRadius;
+    [SerializeField] protected LayerMask enemyMask;
+    [SerializeField] protected float optimalFiringDis;
+    [SerializeField] protected float fireRate;
+    [SerializeField] protected int damage;
+    protected float shootTimer;
+    public int currentTaskPriority = 5;
+    public int health = 10000;
+
     public float speed;
     public FightMode fightMode {private set; get;}
     protected Vector3 moveToPos;
@@ -23,7 +31,11 @@ public class Simulation_Unit : MonoBehaviour
     {
         moveToPos = transform.position;
     }
-
+    public virtual void TakeDamage(int damage, out bool check)
+    {
+        health -= damage;
+        check = false;
+    }
     public void ChangeFightMode(FightMode _mode)
     {
         fightMode = _mode;

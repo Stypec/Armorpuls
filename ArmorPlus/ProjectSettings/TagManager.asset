@@ -12,6 +12,7 @@ TagManager:
   - Water
   - UI
   - 
+  - Simulation_Unit
   - 
   - 
   - 
@@ -35,8 +36,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Simulation_Enemy
   m_SortingLayers:
   - name: Default
     uniqueID: 0
