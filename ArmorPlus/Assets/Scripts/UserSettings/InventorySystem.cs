@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 #if UNITY_EDITOR
@@ -14,6 +12,8 @@ public class InventorySystem : MonoBehaviour
 {
     public Dictionary<ItemType, InventoryObject> inventories = new Dictionary<ItemType, InventoryObject>();
     public static InventorySystem singleton;
+    public List<Unit> units;
+    public int maxUnitCount;
     void Awake()
     {
         if (singleton != null)
@@ -22,7 +22,6 @@ public class InventorySystem : MonoBehaviour
             return;
         }
         singleton = this;
-
 
         /// <READ>
         /// Edit it so it works with data saving
@@ -33,6 +32,12 @@ public class InventorySystem : MonoBehaviour
             ItemType t = (ItemType)i;
             inventories.Add(t, new InventoryObject(t));
         };
+    }
+
+    public void AddUnit()
+    {
+        units.Add(new Unit());
+        MenuVisuals.singleton.UpdateUnitIndexVisuals();
     }
 
 }
