@@ -988,7 +988,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &168943464
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9225,6 +9225,7 @@ MonoBehaviour:
   hangar: {fileID: 264049067}
   bitsText: {fileID: 2026072291}
   addUnitButton: {fileID: 2128492637}
+  unitButton: {fileID: 909730314}
   currentHangarUnitIndex: 0
 --- !u!114 &1331440909
 MonoBehaviour:
@@ -9251,7 +9252,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff8529e2bf635fa45914bd00299f8673, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  units: []
+  units:
+  - {fileID: 0}
   maxUnitCount: 10
 --- !u!114 &1331440911
 MonoBehaviour:
@@ -15488,10 +15490,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1331440908}
-        m_TargetAssemblyTypeName: MenuVisuals, Assembly-CSharp
-        m_MethodName: EditHangarUnitIndex
-        m_Mode: 3
+      - m_Target: {fileID: 1331440910}
+        m_TargetAssemblyTypeName: InventorySystem, Assembly-CSharp
+        m_MethodName: AddUnit
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
