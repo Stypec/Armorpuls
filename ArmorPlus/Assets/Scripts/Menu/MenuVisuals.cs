@@ -65,4 +65,6 @@ public class MenuVisuals : MonoBehaviour
         }
         StopCoroutine(LerpValuesRoutine(destination, duration));
     }
+
+
 }
