@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Currency_Handler : MonoBehaviour
 {
-    private string encryptionKey = "MiklecJeStrasneSexy";
+    private string encryptionKey = "~MiklecJeStrasneSexyUwU~";
 
     public enum CurrencyType
     {

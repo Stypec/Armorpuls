@@ -15,10 +15,6 @@ public class InventorySystem : MonoBehaviour
     public List<Unit> units;
     public int maxUnitCount;
 
-    public Weapon_ItemObject defaultWeapon;
-    public Engine_ItemObject defaultEngine;
-    public Armor_ItemObject defaultArmor;
-
     void Awake()
     {
         if (singleton != null)
@@ -38,11 +34,14 @@ public class InventorySystem : MonoBehaviour
             ItemType t = (ItemType)i;
             inventories.Add(t, new InventoryObject(t));
         };
+        if (units.Count == 0)
+            units.Add(new Unit(Unit.defaultValues));
+            
     }
 
     public void AddUnit()
     {
-        units.Add(new Unit(15000, 3.5f, 150, defaultWeapon, defaultEngine, defaultArmor));
+        units.Add(new Unit(15000, 3.5f, 150, Unit.defaultWeapon, Unit.defaultEngine, Unit.defaultArmor));
         MenuVisuals.singleton.UpdateUnitIndexVisuals();
     }
 

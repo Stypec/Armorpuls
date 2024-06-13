@@ -5,6 +5,9 @@ using UnityEngine;
 [System.Serializable]
 public class Unit
 {
+    public static Weapon_ItemObject defaultWeapon;
+    public static Engine_ItemObject defaultEngine;
+    public static Armor_ItemObject defaultArmor;
     public int maxHealth;
     public int health;
 
@@ -26,4 +29,16 @@ public class Unit
         this.engine = engine;
         this.armor = armor;
     }
+    public Unit(Unit values)
+    {
+        this.maxHealth = values.maxHealth;
+        this.health = values.maxHealth;
+        this.speed = values.speed;
+        this.damage = values.damage;
+        this.weapon = values.weapon;
+        this.engine = values.engine;
+        this.armor = values.armor;
+    }
+
+    public static Unit defaultValues = new Unit(15000, 3.5f, 150, defaultWeapon, defaultEngine, defaultArmor);
 }
