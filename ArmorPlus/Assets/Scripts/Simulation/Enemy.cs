@@ -15,11 +15,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] LayerMask playerLayer;
     [SerializeField] float stoppingDistance = 8f;
     [SerializeField] Transform[] coverPoints;
-    private Transform targetPlayer;
+    private Transform targetEnemy;
     private NavMeshAgent ai;
     private float shootingTimer;
     private bool isTakingCover = false;
-    private bool isPlayerVisible = false;
+    private bool isEnemyVisible = false;
 
     private void Start()
     {
@@ -37,51 +37,51 @@ public class Enemy : MonoBehaviour
             return;
         }
 
-        FindClosestPlayer();
+        FindClosestEnemy();
 
-        if (targetPlayer != null)
+        if (targetEnemy != null)
         {
-            float distanceToPlayer = Vector3.Distance(transform.position, targetPlayer.position);
+            float distanceToEnemy = Vector3.Distance(transform.position, targetEnemy.position);
 
-            isPlayerVisible = IsPlayerVisible();
+            isEnemyVisible = IsEnemyVisible();
 
-            if (distanceToPlayer <= shootingRange && !isTakingCover && isPlayerVisible)
+            if (distanceToEnemy <= shootingRange && !isTakingCover && isEnemyVisible)
             {
-                ShootAtPlayer();
+                ShootAtEnemy();
             }
             else if (!isTakingCover)
             {
-                MoveTowardsPlayer();
+                MoveTowardsEnemy();
             }
         }
     }
 
-    private void FindClosestPlayer()
+    private void FindClosestEnemy()
     {
-        Collider[] players = Physics.OverlapSphere(transform.position, detectionRadius, playerLayer);
+        Collider[] enemies = Physics.OverlapSphere(transform.position, detectionRadius, playerLayer);
         float closestDistance = detectionRadius;
-        targetPlayer = null;
+        targetEnemy = null;
 
-        foreach (Collider player in players)
+        foreach (Collider enemy in enemies)
         {
-            if (player.CompareTag("Player"))
+            if (enemy.CompareTag("Player"))
             {
-                float distance = Vector3.Distance(transform.position, player.transform.position);
+                float distance = Vector3.Distance(transform.position, enemy.transform.position);
                 if (distance < closestDistance)
                 {
                     closestDistance = distance;
-                    targetPlayer = player.transform;
+                    targetEnemy = enemy.transform;
                 }
             }
         }
     }
 
-    private void MoveTowardsPlayer()
+    private void MoveTowardsEnemy()
     {
-        if (targetPlayer != null)
+        if (targetEnemy != null)
         {
-            Vector3 direction = (targetPlayer.position - transform.position).normalized;
-            Vector3 targetPosition = targetPlayer.position - direction * stoppingDistance;
+            Vector3 direction = (targetEnemy.position - transform.position).normalized;
+            Vector3 targetPosition = targetEnemy.position - direction * stoppingDistance;
 
             NavMeshPath path = new NavMeshPath();
             if (ai.CalculatePath(targetPosition, path))
@@ -91,20 +91,20 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private bool IsPlayerVisible()
+    private bool IsEnemyVisible()
     {
-        if (targetPlayer == null) return false;
+        if (targetEnemy == null) return false;
 
         RaycastHit hit;
-        Vector3 direction = (targetPlayer.position - shootingPoint.position).normalized;
+        Vector3 direction = (targetEnemy.position - shootingPoint.position).normalized;
         if (Physics.Raycast(shootingPoint.position, direction, out hit, shootingRange))
         {
-            return hit.transform == targetPlayer && hit.transform.CompareTag("Player");
+            return hit.transform == targetEnemy && hit.transform.CompareTag("Player");
         }
         return false;
     }
 
-    private void ShootAtPlayer()
+    private void ShootAtEnemy()
     {
         shootingTimer += Time.deltaTime;
 
@@ -112,11 +112,28 @@ public class Enemy : MonoBehaviour
         {
             shootingTimer = 0f;
 
-            if (isPlayerVisible)
+            if (isEnemyVisible)
             {
-                var player = targetPlayer.GetComponent<Player>();
-                if (player != null) player.TakeDamage(damage);
+                var enemy = targetEnemy.GetComponent<Player>();
+                if (enemy != null) enemy.TakeDamage(damage);
             }
+            else
+            {
+                MoveToClearLineOfSight();
+            }
+        }
+    }
+
+    private void MoveToClearLineOfSight()
+    {
+        Vector3 direction = (targetEnemy.position - transform.position).normalized;
+        Vector3 offset = new Vector3(Random.Range(-2f, 2f), 0, Random.Range(-2f, 2f));
+        Vector3 targetPosition = targetEnemy.position - direction * stoppingDistance + offset;
+
+        NavMeshPath path = new NavMeshPath();
+        if (ai.CalculatePath(targetPosition, path))
+        {
+            ai.SetDestination(targetPosition);
         }
     }
 
