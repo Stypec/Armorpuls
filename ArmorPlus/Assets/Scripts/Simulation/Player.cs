@@ -117,6 +117,23 @@ public class Player : MonoBehaviour
                 var enemy = targetEnemy.GetComponent<Enemy>();
                 if (enemy != null) enemy.TakeDamage(damage);
             }
+            else
+            {
+                MoveToClearLineOfSight();
+            }
+        }
+    }
+
+    private void MoveToClearLineOfSight()
+    {
+        Vector3 direction = (targetEnemy.position - transform.position).normalized;
+        Vector3 offset = new Vector3(Random.Range(-2f, 2f), 0, Random.Range(-2f, 2f));
+        Vector3 targetPosition = targetEnemy.position - direction * stoppingDistance + offset;
+
+        NavMeshPath path = new NavMeshPath();
+        if (ai.CalculatePath(targetPosition, path))
+        {
+            ai.SetDestination(targetPosition);
         }
     }
 

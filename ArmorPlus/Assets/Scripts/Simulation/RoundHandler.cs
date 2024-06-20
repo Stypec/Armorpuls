@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class RoundHandler : MonoBehaviour
 {
+   /*
     [SerializeField] Transform[] spawnPoint;
     [SerializeField] GameObject playerUnitPrefab;
     [SerializeField] GameObject enemyUnitPrefab;
@@ -27,4 +28,5 @@ public class RoundHandler : MonoBehaviour
             }
         }
     }
+    */
 }
