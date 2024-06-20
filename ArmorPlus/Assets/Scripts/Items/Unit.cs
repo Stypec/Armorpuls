@@ -40,5 +40,5 @@ public class Unit
         this.armor = values.armor;
     }
 
-    public static Unit defaultValues = new Unit(15000, 3.5f, 150, defaultWeapon, defaultEngine, defaultArmor);
+    public static Unit defaultValues = new Unit(1500, 3.5f, 150, defaultWeapon, defaultEngine, defaultArmor);
 }
