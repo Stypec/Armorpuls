@@ -10,4 +10,5 @@ public class ItemObject : ScriptableObject
     public ItemType itemType;
     public int itemBuyCost;
     public int itemSellCost;
+    public int level;
 }
