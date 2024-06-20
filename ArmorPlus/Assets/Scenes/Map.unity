@@ -1151,7 +1151,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: bcb7f10e8faa85a4aab15a0f266adf4f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bcb7f10e8faa85a4aab15a0f266adf4f,
         type: 3}
@@ -27429,13 +27429,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa864d2fdf094a46ab61ff64db60803, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoint:
-  - {fileID: 619077928}
-  - {fileID: 520241879}
-  playerUnitPrefab: {fileID: 5763657444801383613, guid: 702f6ad1ca99d5c4a8722a260d88bc9d,
-    type: 3}
-  enemyUnitPrefab: {fileID: 44540234525647048, guid: 137bba8367c5cad49b626951aee9f5a0,
-    type: 3}
 --- !u!4 &1936174404
 Transform:
   m_ObjectHideFlags: 0

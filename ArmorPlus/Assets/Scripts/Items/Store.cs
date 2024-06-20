@@ -1,9 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Store : MonoBehaviour
 {
+    [SerializeField] public GameObject storeItemPrefab;
+    [SerializeField] public Transform storeItemsParent;
+    [SerializeField] public ItemObject[] items;
+    [SerializeField] private GameObject[] storeItems;
+
+    void Start()
+    {
+        storeItems = new GameObject[items.Length];
+        Debug.Log(items.Length);
+        for (int i = 0; i < items.Length; i++)
+        {
+            storeItems[i] = Instantiate(storeItemPrefab, storeItemsParent);
+            StoreItemValues v = storeItems[i].GetComponent<StoreItemValues>();
+            v.amount = items[i].itemBuyCost;
+            v.sprite.sprite = items[i].sprite;
+            v.Visualize();
+        }
+    }
     public void BuyItem(StoreItemValues _item)
     {
         if (!Currency_Handler.singleton.EditCurrency(Currency_Handler.CurrencyType.Bits, -_item.item.itemBuyCost))
